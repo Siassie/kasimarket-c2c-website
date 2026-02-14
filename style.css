@@ -127,6 +127,7 @@ header {
     border-radius: 30px;
     font-size: 16px;
     cursor: pointer;
+    text-decoration: none;
 }
 
 .default-button:hover {
@@ -287,6 +288,136 @@ header {
         .login-signup-main-div-content-div p a:hover {
             color: blue;
             transition: 0.4s;
+        }
+
+/*     Selling Item Listing     */
+
+#main-div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid lightgray;
+    padding: 50px 0px 50px 0px;
+    margin-left: 600px;
+    margin-right: 600px;
+}
+
+#main-sub-section-div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 40px;
+}
+
+    #main-sub-section-div h1 {
+        font-size: 48px;
+        font-weight: bold;
+        color: black;
+        margin-left: 0px;
+    }
+
+    #main-sub-section-div p {
+        font-size: 18px;
+        color: darkgray;
+    }
+
+#main-div-image-adder {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-bottom: 40px;
+}
+
+    #main-div-image-adder h1 {
+        font-size: 18px;
+        font-weight: bold;
+        color: blue;
+        margin-left: 0px;
+    }
+
+    #main-div-image-adder div {
+        border-radius: 10px;
+        border: 1px dotted lightgray;
+        padding: 20px;
+        width: 100px;
+    }
+
+    #main-div-image-adder p {
+        font-size: 12px;
+        color: lightgray;
+    }
+
+.main-div-item-details {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+    .main-div-item-details h2 {
+        font-size: 24px;
+        font-weight: bold;
+        color: black;
+        margin-left: 0px;
+    }
+
+    .main-div-item-details label {
+        font-size: 16px;
+        color: black;
+        font-weight: bold;
+        display: block;
+        margin-bottom: 6px;
+    }
+
+    .main-div-item-details input, .main-div-item-details textarea {
+        width: 100%;
+        padding: 12px 20px;
+        border: 2px solid lightgray;
+        outline: none;
+        font-size: 14px;
+        background-color: white;
+        border-radius: 8px;
+        margin-bottom: 10px;
+    }
+
+        .main-div-item-details input:focus, .main-div-item-details textarea:focus {
+            border-color: blue;
+            box-shadow: 0 0 0 3px rgba(65, 105, 225, 0.3); /* soft royalblue glow */
+        }
+
+    #item-price-and-category {
+        display: flex;
+        align-items: flex-start; /* important */
+        gap: 20px;
+    }
+
+        .price-category-field {
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+            min-width: 0; /* prevents overflow issues */
+        }
+
+            .price-category-field input,
+            .price-category-field select {
+                width: 100%;
+                box-sizing: border-box;
+            }
+
+    .main-div-item-details select {
+        padding: 12px 20px;
+        border: 2px solid lightgray;
+        outline: none;
+        font-size: 12px;
+        background-color: white;
+        border-radius: 8px;
+    }
+
+        .main-div-item-details select:focus {
+            border-color: blue;
+            box-shadow: 0 0 0 3px rgba(65, 105, 225, 0.3); /* soft royalblue glow */
         }
 
 /*     Footer     */
