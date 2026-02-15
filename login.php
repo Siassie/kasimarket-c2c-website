@@ -21,6 +21,8 @@ if ($result->num_rows === 1) {
 
         $_SESSION['user_id'] = $user['id'];
         $_SESSION['user_name'] = $user['name'];
+        $_SESSION['user_surname'] = $user['surname'];
+        $_SESSION['user_email'] = $user['email'];
 
         echo "Login successful!<br>";
         echo "SESSION USER ID: " . $_SESSION['user_id'];  // testing

@@ -24,7 +24,7 @@ body {
 
 /*     Header     */
 
-header {
+/* header {
     display: flex;
     flex-direction: row;
     max-height: 100px;
@@ -32,6 +32,16 @@ header {
     justify-content: center;
     align-items: center;
     background-color: white;
+}*/
+
+header {
+    display: flex;
+    flex-direction: row;
+    min-height: 100px;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    overflow: visible; /* ADD THIS */
 }
 
     .header-div-class {
@@ -58,6 +68,7 @@ header {
         align-items: center;
         padding: 10px;
         width: 100%;
+        overflow: visible;
     }
 
     #header-div h1 {
@@ -135,6 +146,55 @@ header {
     border: 1px solid blue;
     color: blue;
     transition: 0.4s;
+}
+
+/* Account Dropdown */
+.account-dropdown {
+    position: relative;
+    cursor: pointer;
+}
+
+.account-icon {
+    font-size: 25px;
+}
+
+.dropdown-menu {
+    position: absolute;
+    top: 40px;
+    right: 0;
+    width: 220px;
+    background: #f1f1f1;
+    border-radius: 10px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+    display: none;
+    flex-direction: column;
+    padding: 10px 0;
+    z-index: 1000;
+}
+
+.dropdown-menu.show {
+    display: flex;
+}
+
+.dropdown-header {
+    padding: 10px 15px;
+}
+
+.dropdown-menu hr {
+    border: none;
+    border-top: 1px solid #ddd;
+    margin: 5px 0;
+}
+
+.dropdown-menu a {
+    padding: 10px 15px;
+    text-decoration: none;
+    color: black;
+    font-size: 15px;
+}
+
+.dropdown-menu a:hover {
+    background: #e4e4e4;
 }
 
 /*     Main Content     */
