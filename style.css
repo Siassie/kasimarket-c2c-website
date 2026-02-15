@@ -297,7 +297,7 @@ header {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    border: 1px solid lightgray;
+    /* border: 1px solid lightgray; */
     padding: 50px 0px 50px 0px;
     margin-left: 600px;
     margin-right: 600px;
@@ -419,6 +419,24 @@ header {
             border-color: blue;
             box-shadow: 0 0 0 3px rgba(65, 105, 225, 0.3); /* soft royalblue glow */
         }
+
+#condition-options {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap; /* allows wrapping on small screens */
+}
+
+#condition-options label {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-weight: normal; /* prevents bold text */
+}
+
+#condition-options input[type="radio"] {
+    margin: 0;
+}
+
 
 /*     Footer     */
 

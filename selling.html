@@ -26,7 +26,7 @@
             <div class="main-div-item-details">
                 <h2>Item Details</h2>
 
-                <form action="" id="form-selling">
+                <form action="test.php" method="POST" id="form-selling">
                     <label for="item-title">Title:</label>
                     <input type="text" id="item-title" name="item-title" placeholder="What are you selling?" required>
 
@@ -49,11 +49,13 @@
                     </div>
 
                     <label for="item-condition">Condition:</label>
-                    <input type="radio" id="new" name="item-condition" value="new">
-                    <input type="radio" id="used" name="item-condition" value="like-new">
-                    <input type="radio" id="good" name="item-condition" value="good">
-                    <input type="radio" id="fair" name="item-condition" value="fair">
-                    <input type="radio" id="poor" name="item-condition" value="poor">
+                    <div id="condition-options">
+                        <label><input type="radio" name="item-condition" value="new">New</label>
+                        <label><input type="radio" name="item-condition" value="like-new">Like New</label>
+                        <label><input type="radio" name="item-condition" value="good">Good</label>
+                        <label><input type="radio" name="item-condition" value="fair">Fair</label>
+                        <label><input type="radio" name="item-condition" value="poor">Poor</label>
+                    </div>
 
                     <label for="item-description">Description:</label>
                     <textarea id="item-description" name="item-description" rows="4" required></textarea>
@@ -63,7 +65,7 @@
                         <input type="text" id="item-location" name="item-location" required>
                     </div>
 
-                    <button type="submit" class="default-button">List Item</button>
+                    <button type="submit" class="default-button" style="margin-bottom: 50px; justify-content: center; align-items: center;">List Item</button>
                 </form>
             </div>
         </div>

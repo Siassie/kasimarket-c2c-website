@@ -7,12 +7,12 @@
     <div id="header"></div>
 
     <main class="login-signup-main">
-        <div class="login-signup-main-div">
+        <form class="login-signup-main-div" action="login.php" method="POST">
             <h1>Login Page</h1>
             
             <div class="login-signup-main-div-content-div">
-                <label for="username">Username:</label>
-                <input type="text" id="username" name="username">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email">
 
                 <label for="password">Password:</label>
                 <input type="password" id="password" name="password">
@@ -20,7 +20,7 @@
                 <button class="default-button" style="width: 150px; margin-top: 20px;">Login</button>
                 <p>Don't have an account? <a href="signup.html">Sign up</a></p>
             </div>
-        </div>
+        </form>
     </main>
 
     <div id="footer"></div>
