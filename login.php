@@ -26,6 +26,8 @@ if ($result->num_rows === 1) {
 
         echo "Login successful!<br>";
         echo "SESSION USER ID: " . $_SESSION['user_id'];  // testing
+        header("Location: index.html");
+        exit();
 
     } else {
         echo "Incorrect password.";
