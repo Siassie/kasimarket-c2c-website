@@ -1,0 +1,79 @@
+* {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: black;
+    padding: 0px;
+    margin: 0px;
+}
+
+html, body {
+    height: 100%;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/*     Header     */
+
+header {
+    display: flex;
+    flex-direction: row;
+    min-height: 100px;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    overflow: visible;
+}
+
+/* Main header wrapper */
+#header-admin {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 40px;
+    padding: 10px;
+    width: 100%;
+}
+
+/* LEFT spacing (same as main site) */
+#header-admin h1 {
+    margin-left: 400px;
+    font-size: 30px;
+    font-weight: bold;
+    color: blue;
+}
+
+#span-1 {
+    color: blue;
+}
+
+#span-2 {
+    color: black;
+}
+
+#span-3 {
+    color: blue;
+}
+
+/* RIGHT spacing (same as main site) */
+#header-admin-div {
+    display: flex;
+    flex-direction: row;
+    gap: 40px;
+    margin-right: 400px;
+}
+
+/* Links */
+#header-admin-div a {
+    font-size: 18px;
+    color: black;
+    text-decoration: none;
+}
+
+#header-admin-div a:hover {
+    color: blue;
+    transition: 0.4s;
+}

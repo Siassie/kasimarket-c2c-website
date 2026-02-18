@@ -26,7 +26,24 @@ if ($result->num_rows === 1) {
 
         echo "Login successful!<br>";
         echo "SESSION USER ID: " . $_SESSION['user_id'];  // testing
-        header("Location: index.html");
+
+        $user_id = $_SESSION['user_id'];  // Store user ID in a variable for testing
+
+        $stmt = $conn->prepare("SELECT role FROM users WHERE id = ?");
+        $stmt->bind_param("i", $user_id);
+        $stmt->execute();
+
+        $result = $stmt->get_result();
+
+        if ($result->num_rows === 1) {
+            if ($result->fetch_assoc()['role'] === 'admin') {
+                header("Location: admin_panel.html");
+                exit();
+            } else {
+                header("Location: index.html");
+                exit();
+            }
+        }
         exit();
 
     } else {

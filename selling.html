@@ -27,7 +27,7 @@
             <div class="main-div-item-details">
                 <h2>Item Details</h2>
 
-                <form action="test.php" method="POST" id="form-selling">
+                <form action="insert_item.php" method="POST" id="form-selling">
                     <label for="item-title">Title:</label>
                     <input type="text" id="item-title" name="item-title" placeholder="What are you selling?" required>
 
@@ -51,11 +51,11 @@
 
                     <label for="item-condition">Condition:</label>
                     <div id="condition-options">
-                        <label><input type="radio" name="item-condition" value="new">New</label>
-                        <label><input type="radio" name="item-condition" value="like-new">Like New</label>
-                        <label><input type="radio" name="item-condition" value="good">Good</label>
-                        <label><input type="radio" name="item-condition" value="fair">Fair</label>
-                        <label><input type="radio" name="item-condition" value="poor">Poor</label>
+                        <label><input type="radio" name="item-condition" id="item-condition-new" value="new">New</label>
+                        <label><input type="radio" name="item-condition" id="item-condition-like-new" value="like-new">Like New</label>
+                        <label><input type="radio" name="item-condition" id="item-condition-good" value="good">Good</label>
+                        <label><input type="radio" name="item-condition" id="item-condition-fair" value="fair">Fair</label>
+                        <label><input type="radio" name="item-condition" id="item-condition-poor" value="poor">Poor</label>
                     </div>
 
                     <label for="item-description">Description:</label>
