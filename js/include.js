@@ -110,6 +110,9 @@ async function loadItems() {
         const response = await fetch("../php/get_items_for_index.php");
         const items = await response.json();
 
+        const text = await response.text();   // change this
+        console.log(text); 
+
         const container = document.getElementById("items-container");
 
         container.innerHTML = "";

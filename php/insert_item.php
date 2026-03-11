@@ -2,67 +2,128 @@
 include 'db.php';
 session_start();
 
+// =============================
+// SESSION CHECK
+// =============================
 if (!isset($_SESSION['user_id'])) {
-    die("User not logged in");
+    die(json_encode(["error" => "User not logged in"]));
 }
 
 $user_id = $_SESSION['user_id'];
 
-$title = $_POST['item-title'];
-$price = $_POST['item-price'];
-$category = $_POST['item-category'];
-$condition = $_POST['item-condition'];
-$description = $_POST['item-description'];
-$location = $_POST['item-location'];
+// =============================
+// INPUTS
+// =============================
+$title       = $_POST['item-title'] ?? null;
+$price       = $_POST['item-price'] ?? null;
+$category    = $_POST['item-category'] ?? null;
+$condition   = $_POST['item-condition'] ?? null;
+$description = $_POST['item-description'] ?? null;
+$location    = $_POST['item-location'] ?? null;
 
 $uploadDir = "../uploads/items/";
-$photoPaths = [];
 
-if (!empty($_FILES['item-photos']['name'][0])) {
+// =============================
+// FUNCTIONS / METHODS
+// =============================
 
-    foreach ($_FILES['item-photos']['tmp_name'] as $key => $tmp_name) {
+/**
+ * Insert item into DB (without photos)
+ * Returns inserted item ID or false on error
+ */
+function insertItem($conn, $title, $description, $price, $category, $condition, $location, $user_id) {
+    $stmt = $conn->prepare("
+        INSERT INTO items
+        (title, item_description, price, category, item_condition, item_location, user_id) 
+        VALUES (?, ?, ?, ?, ?, ?, ?)
+    ");
+    if (!$stmt) {
+        die(json_encode(["error" => "Prepare failed: " . $conn->error]));
+    }
 
-        if ($_FILES['item-photos']['error'][$key] === 0) {
+    $stmt->bind_param(
+        "ssdsssi",
+        $title,
+        $description,
+        $price,
+        $category,
+        $condition,
+        $location,
+        $user_id
+    );
 
-            $ext = pathinfo($_FILES['item-photos']['name'][$key], PATHINFO_EXTENSION);
-            $fileName = time() . "_" . uniqid() . "." . $ext;
-
-            $targetFile = $uploadDir . $fileName;
-
-            if (move_uploaded_file($tmp_name, $targetFile)) {
-                $photoPaths[] = $fileName;
-            }
-        }
+    if ($stmt->execute()) {
+        $itemId = $conn->insert_id;
+        $stmt->close();
+        return $itemId;
+    } else {
+        $stmt->close();
+        return false;
     }
 }
 
-$photosJson = json_encode($photoPaths);
+/**
+ * Upload photos and return array of filenames
+ */
+function uploadPhotos($files, $uploadDir, $itemId) {
+    $photoPaths = [];
 
-$stmt = $conn->prepare("
-INSERT INTO items 
-(title, item_description, price, category, item_condition, item_location, user_id, photos) 
-VALUES (?, ?, ?, ?, ?, ?, ?, ?)
-");
+    if (empty($files['name'][0])) {
+        return $photoPaths;
+    }
 
-$stmt->bind_param(
-    "ssdsssis",
-    $title,
-    $description,
-    $price,
-    $category,
-    $condition,
-    $location,
-    $user_id,
-    $photosJson
-);
+    foreach ($files['tmp_name'] as $key => $tmp_name) {
+        if ($files['error'][$key] !== 0) continue;
 
-if ($stmt->execute()) {
-    header("Location: ../html/index.html");
-    exit();
-} else {
-    echo "Error: " . $stmt->error;
+        $ext = pathinfo($files['name'][$key], PATHINFO_EXTENSION);
+        $fileName = $itemId . "_" . ($key+1) . "." . $ext; // e.g., 15_1.jpg
+        $targetFile = $uploadDir . $fileName;
+
+        if (move_uploaded_file($tmp_name, $targetFile)) {
+            $photoPaths[] = $fileName;
+        }
+    }
+
+    return $photoPaths;
 }
 
-$stmt->close();
+/**
+ * Update item row with photos JSON
+ */
+function updateItemPhotos($conn, $itemId, $photoPaths) {
+    if (empty($photoPaths)) return true; // nothing to update
+
+    $photosJson = json_encode($photoPaths);
+    $stmt = $conn->prepare("UPDATE items SET photos = ? WHERE id = ?");
+    if (!$stmt) {
+        die(json_encode(["error" => "Prepare failed: " . $conn->error]));
+    }
+
+    $stmt->bind_param("si", $photosJson, $itemId);
+
+    $success = $stmt->execute();
+    $stmt->close();
+
+    return $success;
+}
+
+// =============================
+// MAIN FLOW
+// =============================
+$itemId = insertItem($conn, $title, $description, $price, $category, $condition, $location, $user_id);
+
+if (!$itemId) {
+    die(json_encode(["error" => "Failed to insert item"]));
+}
+
+// Upload photos
+$photoPaths = uploadPhotos($_FILES['item-photos'], $uploadDir, $itemId);
+
+// Update item with photo paths
+updateItemPhotos($conn, $itemId, $photoPaths);
+
+header("Location: ../html/index.html");
+exit();
+
 $conn->close();
 ?>
