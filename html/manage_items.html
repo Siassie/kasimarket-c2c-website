@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <link rel="stylesheet" href="../css/style_admin.css">
+</head>
+<body>
+    <div id="admin-header"></div>
+    
+    <main>
+        <table id="items-table" class="table-admin-style" border="1">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Title</th>
+                    <th>Price</th>
+                    <th>Description</th>
+                    <th>Category</th>
+                    <th>Condition</th>
+                    <th>Location</th>
+                    <th>User ID</th>
+                    <th>Admin Review</th>
+                    <th>Admin ID</th>
+                    <th>Created At</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Data loads here -->
+            </tbody>
+        </table>
+
+        <div class="button-div">
+            <form method="POST" action="../php/admin_add_item.php">
+                <button id="btnAdminAddItem" class="default-button">Add Item</button>
+            </form>
+            
+            <form method="POST" action="../php/admin_delete_item.php">
+                <button id="btnAdminDeleteItem" class="default-button">Delete Item</button>
+            </form>
+        </div>
+    </main>
+
+    <div id="footer"></div>
+
+    <script src="../js/admin_include.js"></script>
+</html>

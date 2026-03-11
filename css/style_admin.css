@@ -77,3 +77,43 @@ header {
     color: blue;
     transition: 0.4s;
 }
+
+.table-admin-style {
+    width: 1000px;
+    border-collapse: collapse;
+    margin: 20px auto;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+}
+
+    .table-admin-style th {
+        border: 3px solid black;
+        color: blue;
+        padding: 10px;
+    }
+
+        .table-admin-style td {
+            border: 1px solid black;
+            padding: 10px;
+            color: black;
+        }  
+
+.default-button {
+    padding: 10px 20px;
+    background-color: blue;
+    color: white;
+    border: none;
+    border-radius: 30px;
+    font-size: 16px;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.default-button:hover {
+    background-color: white; /* darker royalblue */
+    border: 1px solid blue;
+    color: blue;
+    transition: 0.4s;
+}

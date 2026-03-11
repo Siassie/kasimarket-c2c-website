@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <link rel="stylesheet" href="../css/style_admin.css">
+</head>
+<body>
+    <div id="admin-header"></div>
+    
+    <main>
+        <table id="users-table" class="table-admin-style" border="1">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Surname</th>
+                    <th>Email</th>
+                    <th>Password</th>
+                    <th>Role</th>
+                    <th>Created At</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Data loads here -->
+            </tbody>
+        </table>
+
+        <div class="button-div">
+            <form method="POST" action="../php/add_user.php">
+                <button id="add-user-btn" class="admin-button">Add User</button>
+            </form>
+            
+            <form method="POST" action="../php/delete_user.php">
+                <button id="delete-user-btn" class="admin-button">Delete User</button>
+            </form>
+
+
+        </div>
+        
+
+    </main>
+
+    <div id="footer"></div>
+
+    <script src="../js/admin_include.js"></script>
+</html>

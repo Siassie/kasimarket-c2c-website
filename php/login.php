@@ -37,10 +37,10 @@ if ($result->num_rows === 1) {
 
         if ($result->num_rows === 1) {
             if ($result->fetch_assoc()['role'] === 'admin') {
-                header("Location: admin_panel.html");
+                header("Location: ../html/admin_panel.html");
                 exit();
             } else {
-                header("Location: index.html");
+                header("Location: ../html/index.html");
                 exit();
             }
         }

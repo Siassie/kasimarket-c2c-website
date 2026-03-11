@@ -384,6 +384,8 @@ header {
         color: darkgray;
     }
 
+
+
 #main-div-image-adder {
     display: flex;
     flex-direction: column;
@@ -510,7 +512,86 @@ footer {
     height: 100px;
     justify-content: center;
     align-items: center;
-    background-color: lightgray;
+    background-color: white;
 }
 
 
+.item-card{
+    border:1px solid #eee;
+    padding:10px;
+    border-radius:8px;
+}
+
+.item-image{
+    width:100%;
+    height:200px;
+    object-fit:cover;
+    border-radius:6px;
+}
+
+/* get single item styles */
+#item-page{
+    display:flex;
+    gap:40px;
+    padding:40px;
+}
+
+#item-images{
+    width:50%;
+}
+
+#item-images img{
+    width:100%;
+    margin-bottom:10px;
+    border-radius:8px;
+}
+
+#item-info{
+    width:50%;
+}
+
+#item-price {
+    font-size: 22px;
+    font-weight: bold;
+    margin: 40px auto 40px 10px;
+    color: blue;
+}
+
+.bi bi-geo-alt {
+    color: gray;
+}
+
+/* .item-category {
+    background-color: #E9EAF2;
+    color: blue;
+    font-weight: bold;
+    padding: 4px 8px;
+    border-radius: 15px;
+    font-size: 14px;
+    display: inline-block;
+    margin-bottom: 10px;
+} */
+
+#item-meta {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+#item-meta p {
+    margin: 0;
+}
+
+.item-category {
+    background-color: #E9EAF2;
+    color: blue;
+    font-weight: bold;
+    padding: 4px 10px;
+    border-radius: 15px;
+    font-size: 14px;
+    display: inline-block;
+}
+
+/* #item-meta p {
+    margin: 0;
+} */

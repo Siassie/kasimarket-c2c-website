@@ -11,7 +11,7 @@ function loadHeader(containerId = 'admin-header') {
         return;
     }
 
-    fetch('admin_header.html')
+    fetch('../html/admin_header.html')
         .then(response => {
             if (!response.ok) {
                 throw new Error("Failed to fetch header file.");
@@ -27,7 +27,7 @@ function loadHeader(containerId = 'admin-header') {
 }
 
 function loadItems() {
-    fetch('get_items.php')
+    fetch('../php/get_items.php')
         .then(response => response.json())
         .then(data => {
             const tableBody = document.querySelector("#items-table tbody");
@@ -39,9 +39,14 @@ function loadItems() {
                         <td>${item.id}</td>
                         <td>${item.title}</td>
                         <td>${item.price}</td>
+                        <td>${item.item_description}</td>
                         <td>${item.category}</td>
                         <td>${item.item_condition}</td>
                         <td>${item.item_location}</td>
+                        <td>${item.user_id}</td>
+                        <td>${item.admin_review}</td>
+                        <td>${item.admin_id}</td>
+                        <td>${item.created_at}</td>
                     </tr>
                 `;
                 tableBody.innerHTML += row;
@@ -51,10 +56,10 @@ function loadItems() {
 }
 
 function loadUsers() {
-    fetch('get_users.php')
+    fetch('../php/get_users.php')
         .then(response => response.json())
         .then(data => {
-            const tableBody = document.querySelector("#items-table tbody");
+            const tableBody = document.querySelector("#users-table tbody");
             tableBody.innerHTML = "";
 
             data.forEach(item => {

@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-   <link rel="stylesheet" href="style.css">
-   <script src="header.js"></script>
+   <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
     <div id="header"></div>
@@ -14,20 +13,33 @@
                     <h1 id="main-sub-section-div-h1">List Your Item for Sale</h1>
                     <p>List your item for sale in our community marketplace.</p>
                 </div>
-            </div>
-
-            <div id="main-div-image-adder">
-                <h1>Photos</h1>
-                <div id="div-placeholder">
-
-                </div>
-                <p>Add up to 5 photos. The first photo will be used as the cover photo.</p>
-            </div>
+            </div>           
 
             <div class="main-div-item-details">
                 <h2>Item Details</h2>
 
-                <form action="insert_item.php" method="POST" id="form-selling">
+                <form action="../php/insert_item.php" method="POST" id="form-selling" enctype="multipart/form-data">                    <div id="main-div-image-adder">
+                        <!-- <h1>Photos</h1>
+                        <div id="div-placeholder">
+                            <p>Click to add photos</p>
+                            <input type="file" id="item-photos" name="item-photos[]" accept="image/*" multiple style="display: none;">
+                        </div>
+                        <p>Add up to 5 photos. The first photo will be used as the cover photo.</p>
+                    </div> -->
+
+                    <!-- <div id="main-div-image-adder"> -->
+                        <h1>Photos</h1>
+
+                        <div id="div-placeholder">
+                            <p>Click to add photos</p>
+                            <input type="file" id="item-photos" name="item-photos[]" accept="image/*" multiple>
+                        </div>
+
+                        <div id="image-preview"></div>
+
+                        <p>Add up to 5 photos. The first photo will be used as the cover photo.</p>
+                    <!-- </div> -->
+
                     <label for="item-title">Title:</label>
                     <input type="text" id="item-title" name="item-title" placeholder="What are you selling?" required>
 
@@ -74,5 +86,5 @@
 
     <div id="footer"></div>
 
-    <script src="include.js"></script>
+    <script src="../js/include.js"></script>
 </html>
