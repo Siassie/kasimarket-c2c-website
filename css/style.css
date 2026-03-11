@@ -350,6 +350,34 @@ header {
             transition: 0.4s;
         }
 
+#items-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+.item-card {
+    flex: 0 0 calc(20% - 20px); /* 5 per row minus gap */
+    box-sizing: border-box;
+}
+
+.item-card h3 {
+    color: blue;       /* change to any color you like */
+    font-weight: bold;
+    font-size: 1.1rem;
+    margin: 10px 0 5px 0;
+}
+
+/* Item card price */
+.item-card strong {
+    color: blue;       /* change to any color you like */
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+
+
 /*     Selling Item Listing     */
 
 #main-div {
