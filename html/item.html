@@ -28,6 +28,11 @@
 
         <h3 for="item-description" class="default-for">Description:</h3>
         <p id="item-description"></p>
+
+        <form id="add-to-cart" action="../php/add_to_cart.php" method="POST">
+            <input type="hidden" name="id" id="item-id">
+            <button type="submit" id="btnAddToCart" class="default-button">Add to Cart</button>
+        </form>
     </div>
 
 </div>

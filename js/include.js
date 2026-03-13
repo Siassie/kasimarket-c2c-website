@@ -6,6 +6,7 @@ document.addEventListener("DOMContentLoaded", function () {
     loadFooter();
     loadItems();
     initImageUploader();
+    initAddToCart();
 });
 
 // =============================
@@ -202,4 +203,28 @@ function initImageUploader() {
 
         });
     });
+}
+
+// =============================
+// SET ITEM ID FOR ADD TO CART
+// =============================
+function initAddToCart() {
+
+    const form = document.getElementById("add-to-cart");
+    const hiddenInput = document.getElementById("item-id");
+
+    // If page doesn't contain cart form, exit
+    if (!form || !hiddenInput) return;
+
+    // Get ID from URL
+    const params = new URLSearchParams(window.location.search);
+    const itemId = params.get("id");
+
+    if (!itemId) {
+        console.error("No item ID found in URL");
+        return;
+    }
+
+    // Insert ID into hidden input
+    hiddenInput.value = itemId;
 }
