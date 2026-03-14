@@ -7,6 +7,7 @@ document.addEventListener("DOMContentLoaded", function () {
     loadItems();
     initImageUploader();
     initAddToCart();
+    loadItemsInCart();
 });
 
 // =============================
@@ -227,4 +228,27 @@ function initAddToCart() {
 
     // Insert ID into hidden input
     hiddenInput.value = itemId;
+}
+
+async function loadItemsInCart() {
+    try {
+        const response = await fetch("../php/get_items_for_cart.php");
+        const items = await response.json();
+
+        if (items.error) {
+            console.error(items.error);
+            return;
+        }
+
+        const container = document.getElementById("cart-items");
+        container.innerHTML = "";
+
+        items.forEach(item => {
+            const card = createItemCard(item);
+            container.appendChild(card);
+        });
+
+    } catch (error) {
+        console.error("Error loading items:", error);
+    }
 }
