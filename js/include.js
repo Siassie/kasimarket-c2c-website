@@ -230,6 +230,70 @@ function initAddToCart() {
     hiddenInput.value = itemId;
 }
 
+function createItemCardForCart(item) {
+
+    const card = document.createElement("div");
+    card.classList.add("cart-item");
+
+    // store cart row id
+    card.dataset.cartId = item.id;
+
+    const image = item.photo
+        ? `../uploads/items/${item.photo}`
+        : "../images/no-image.png";
+
+    card.innerHTML = `
+        <div class="cart-item-left">
+            <img src="${image}" class="cart-item-image">
+        </div>
+
+        <div class="cart-item-middle">
+            <h2 class="cart-item-title">${item.title}</h2>
+            <p class="cart-item-condition">Condition: ${item.condition}</p>
+
+            <div class="cart-quantity">
+                <button class="qty-btn">-</button>
+                <span>${item.quantity}</span>
+                <button class="qty-btn">+</button>
+            </div>
+        </div>
+
+        <div class="cart-item-right">
+            <p class="cart-price">R ${item.price}</p>
+            <button class="remove-btn">
+                <i class="bi bi-trash"></i>
+            </button>
+        </div>
+    `;
+
+    // remove button logic
+    const removeBtn = card.querySelector(".remove-btn");
+
+    removeBtn.addEventListener("click", async () => {
+
+        const cartId = card.dataset.cartId;
+
+        const response = await fetch("../php/remove_item_from_cart.php", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({ id: cartId })
+        });
+
+        const result = await response.json();
+
+        if (result.success) {
+            card.remove();
+        } else {
+            alert("Failed to remove item");
+        }
+
+    });
+
+    return card;
+}
+
 async function loadItemsInCart() {
     try {
         const response = await fetch("../php/get_items_for_cart.php");
@@ -244,7 +308,8 @@ async function loadItemsInCart() {
         container.innerHTML = "";
 
         items.forEach(item => {
-            const card = createItemCard(item);
+            const card = createItemCardForCart(item);
+            card.classList.add("cart-items-style")
             container.appendChild(card);
         });
 
