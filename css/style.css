@@ -75,6 +75,12 @@ header {
         font-size: 30px;
         font-weight: bold;
         color: blue;
+        text-decoration: none;
+    }
+
+    #header-div h1 a {
+        text-decoration: none;
+        color: blue;
     }
 
     .search-container {
